@@ -1,0 +1,81 @@
+<html>
+<meta charset="utf-8">
+<head>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.wrapper {
+	width: 600px;
+	margin: 2em auto;
+}
+
+.loadbar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 2px;
+	width: 0%;
+	background: tomato;
+	box-shadow: 0 0 2px 2px rgba(111,0,0,.1);
+	transition: all .2s ease-in;
+}
+
+</style>
+</head>
+<body>
+<div class="loadbar"></div>
+
+<div class="wrapper">
+
+	<button class="set-loadbar" data-progress="0">set to 0%</button>
+	<button class="set-loadbar" data-progress="10">set to 10%</button>
+	<button class="set-loadbar" data-progress="25">set to 25%</button>
+	<button class="set-loadbar" data-progress="50">set to 50%</button>
+	<button class="set-loadbar" data-progress="100">set to 100%</button>
+
+
+	<button class="increase-loadbar">increase</button>
+	<button class="decrease-loadbar">decrease</button>
+
+</div>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
+<script>
+$(document).ready(function(){
+	$('.set-loadbar').on('click', function() {
+		var test = $(this).data('progress');
+		$('.loadbar').css('width', test+"%");
+	});
+	$('.increase-loadbar').on('click', function() {
+		// TODO
+		// currentWidth ========> needs to be from browser window size
+		// check for 0/negative and 100/>100
+		var currentWidth = parseInt($('.loadbar').css('width'));
+		console.log("Current width: "+currentWidth);
+		var onePercent = parseInt($('.loadbar').css('width'))/100;
+		console.log("one percent: "+onePercent);
+
+		$('.loadbar').css('width', currentWidth+onePercent);
+	});
+
+	$('.decrease-loadbar').on('click', function() {
+		// TODO
+		// currentWidth ========> needs to be from browser window size
+		// check for 0/negative and 100/>100
+		var currentWidth = parseInt($('.loadbar').css('width'));
+		console.log("Current width: "+currentWidth);
+		var onePercent = parseInt($('.loadbar').css('width'))/100;
+		console.log("one percent: "+onePercent);
+
+		$('.loadbar').css('width', currentWidth-onePercent);
+	});
+});
+</script>
+
+</body>
+</html>
